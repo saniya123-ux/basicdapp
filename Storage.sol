@@ -61,3 +61,35 @@ contract PrimeNumber {
         return true;
     }
 }
+
+
+vote
+
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
+
+contract Voting {
+
+    uint public candidate1Votes;
+    uint public candidate2Votes;
+
+    mapping(address => bool) public hasVoted;
+
+    function vote(uint candidate) public {
+        require(!hasVoted[msg.sender], "Already voted");
+        require(candidate == 1 || candidate == 2, "Invalid candidate");
+
+        hasVoted[msg.sender] = true;
+
+        if (candidate == 1)
+            candidate1Votes++;
+        else
+            candidate2Votes++;
+    }
+
+    function getVotes() public view returns (uint, uint) {
+        return (candidate1Votes, candidate2Votes);
+    }
+}

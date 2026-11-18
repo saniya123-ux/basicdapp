@@ -53,3 +53,10 @@ $("checkBtn").onclick = async () => {
 
     $("result").innerText = result ? "Perfect Number" : "Not a Perfect Number";
 };
+
+// Check Prime Number
+$("checkBtn").onclick = async () => {
+    const result = await contract.checkPrime($("number").value);
+
+    $("result").innerText = result ? "Prime Number" : "Not a Prime Number";
+};

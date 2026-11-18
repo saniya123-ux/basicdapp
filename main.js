@@ -5,7 +5,8 @@ const address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 const abi = [
     "function addNumbers(uint256,uint256)",
-    "function getResult() view returns(uint256)"
+    "function getResult() view returns(uint256)",
+    "function checkPerfect(uint256) view returns(bool)"
 ];
 
 let contract;
@@ -36,3 +37,11 @@ $("addBtn").onclick = async () => {
 //$("readBtn").onclick = async () => {
  //   $("result").innerText = await contract.getResult();
 // <button id="readBtn">Refresh Result</button>};
+
+
+// Check Perfect Number
+$("checkBtn").onclick = async () => {
+    const result = await contract.checkPerfect($("number").value);
+
+    $("result").innerText = result ? "Perfect Number" : "Not a Perfect Number";
+};

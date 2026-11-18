@@ -23,13 +23,6 @@ $("connectBtn").onclick = async () => {
 };
 
 
-// Check Prime Number
-$("checkBtn").onclick = async () => {
-    const result = await contract.checkPrime($("number").value);
-
-    $("result").innerText = result ? "Prime Number" : "Not a Prime Number";
-};
-
 // Add Numbers
 $("addBtn").onclick = async () => {
     const tx = await contract.addNumbers(
@@ -60,3 +53,25 @@ $("checkBtn").onclick = async () => {
 
     $("result").innerText = result ? "Prime Number" : "Not a Prime Number";
 };
+
+// Vote
+async function vote(candidate) {
+    const tx = await contract.vote(candidate);
+    await tx.wait();
+
+    $("status").innerText = "Vote submitted successfully!";
+    getResults();
+}
+
+$("vote1").onclick = () => vote(1);
+$("vote2").onclick = () => vote(2);
+
+// Display Results
+async function getResults() {
+    const result = await contract.getVotes();
+
+    $("votes1").innerText = result[0].toString();
+    $("votes2").innerText = result[1].toString();
+}
+
+$("refreshBtn").onclick = getResults;

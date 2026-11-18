@@ -40,3 +40,24 @@ contract PerfectNumber {
         return sum == n;
     }
 }
+
+primeno
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
+
+contract PrimeNumber {
+
+    function checkPrime(uint256 n) public pure returns (bool) {
+        if (n <= 1) return false;
+
+        for (uint256 i = 2; i <= n / i; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}

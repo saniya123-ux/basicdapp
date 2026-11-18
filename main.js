@@ -22,6 +22,14 @@ $("connectBtn").onclick = async () => {
     $("wallet").innerText = "Wallet Connected";
 };
 
+
+// Check Prime Number
+$("checkBtn").onclick = async () => {
+    const result = await contract.checkPrime($("number").value);
+
+    $("result").innerText = result ? "Prime Number" : "Not a Prime Number";
+};
+
 // Add Numbers
 $("addBtn").onclick = async () => {
     const tx = await contract.addNumbers(

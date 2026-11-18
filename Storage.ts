@@ -23,3 +23,14 @@ export default buildModule("PerfectNumberModule", (m) => {
     const perfect = m.contract("PerfectNumber");
     return { perfect };
 });
+
+
+primeno
+
+
+import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
+
+export default buildModule("PrimeNumberModule", (m) => {
+    const prime = m.contract("PrimeNumber");
+    return { prime };
+});

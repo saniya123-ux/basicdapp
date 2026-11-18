@@ -16,3 +16,27 @@ contract Addition {
         return result;
     }
 }
+
+
+perfectnum
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
+
+contract PerfectNumber {
+
+    function checkPerfect(uint256 n) public pure returns (bool) {
+        if (n <= 1) return false;
+
+        uint256 sum = 0;
+
+        for (uint256 i = 1; i <= n / 2; i++) {
+            if (n % i == 0) {
+                sum += i;
+            }
+        }
+
+        return sum == n;
+    }
+}
